@@ -1,0 +1,192 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  margin: 80px auto 0 auto;
+  padding: 0 24px;
+}
+
+#intro {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+}
+
+.intro-app-wrapper {
+  .intro-app {
+    margin-top: 80px;
+    .intro-app-name {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        width: 40px;
+        height: 40px;
+        object-fit: fill;
+        border-radius: 100%;
+      }
+      .app-name {
+        margin-left: 10px;
+        text-align: start;
+        font-weight: 600;
+        min-width: 200px;
+        color: var(--primary-color);
+      }
+    }
+
+    .intro-app-title {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 56px;
+      text-align: start;
+    }
+
+    .signup {
+      margin-top: 12px;
+      min-width: 200px;
+      height: 72px;
+      border-radius: 24px;
+      font-weight: 600;
+      line-height: 24px;
+      font-size: 2rem;
+    }
+  }
+
+  .intro-app-feature {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    .intro-app-feature-item {
+      display: flex;
+      background-color: rgba(239, 239, 245, 0.9);
+      align-items: center;
+
+      width: fit-content;
+      padding: 12px 16px;
+      border-radius: 100px;
+      margin: 8px 8px 0 0;
+      font-weight: 500;
+      .icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+      }
+
+      .title {
+      }
+    }
+    .intro-app-feature-item:last-child {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      background-color: #000000;
+      width: 100%;
+      padding: 12px 24px;
+
+      .icon-list {
+        margin-left: 24px;
+
+        .icon-item + .icon-item {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.intro-img-wrapper {
+  position: relative;
+  width: 100%;
+  z-index: -1;
+  background-color: red($color: #000000);
+
+  .intro-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -118px;
+    .image {
+      width: 100%;
+      
+    }
+
+}
+
+
+}
+
+
+.feature {
+}
+
+.partner {
+}
+
+.contact {
+}
+
+@media screen and (min-width: 744px) {
+  .wrapper {
+    padding: 0 36px;
+  }
+  .intro-app-wrapper {
+    flex-basis: 33.333%;
+    max-width: 33.333%;
+    .intro-app {
+      .intro-app-title {
+        min-width: 400px;
+      }
+    }
+
+    .intro-app-feature {
+      width: 530px;
+      .intro-app-feature-item:last-child {
+        width: fit-content;
+      }
+    }
+  }
+
+  .intro-img-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    flex-basis: 66.667%;
+    max-width: 66.667%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    max-width: 1200px;
+  }
+
+  .intro-app-wrapper {
+    flex-basis: 41.667%;
+    max-width: 41.667%;
+    .intro-app {
+      .intro-app-title {
+        min-width: 400px;
+      }
+    }
+
+    .intro-app-feature {
+      width: 530px;
+      .intro-app-feature-item:last-child {
+        width: fit-content;
+      }
+    }
+  }
+
+  .intro-img-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    flex-basis: 58.333%;
+    max-width: 58.333%;
+  }
+}

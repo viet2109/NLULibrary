@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0px 24px;
+    background: rgba(255, 255, 255);
+    box-shadow: rgba(30, 136, 229, 0.1) 0px 4px 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+}
+
+@media screen and (min-width:744px) {
+    .wrapper {
+        padding: 0px 36px;
+    }
+    
+}
