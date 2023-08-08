@@ -27,7 +27,8 @@ function Home(props) {
                 <span className={cx("app-name")}>Matcha company</span>
               </div>
               <p className={cx("intro-app-title")}>
-                Một cách hiệu quả để quản lý lớp học
+                Tìm tài liệu một cách dễ dàng
+                " Nắng giảng đường Phượng Vỹ ghi dấu chân tuổi trẻ, ở đâu bán tài liệu giá rẻ chứ ở đây FREE "
               </p>
               <Button to={"/signup"} primary className={cx("signup")}>
                 Tham gia ngay
@@ -42,7 +43,7 @@ function Home(props) {
                   }
                   alt={"share"}
                 />
-                <p className={cx("title")}>Cung cấp tài nguyên cho học sinh</p>
+                <p className={cx("title")}>Cung cấp tài liệu các chuyên ngành</p>
               </li>
               <li className={cx("intro-app-feature-item")}>
                 <img
@@ -52,7 +53,7 @@ function Home(props) {
                   }
                   alt={"share"}
                 />
-                <p className={cx("title")}>Khai thác học liệu</p>
+                <p className={cx("title")}>Thi thử miễn phí</p>
               </li>
               <li className={cx("intro-app-feature-item")}>
                 <img
@@ -62,7 +63,7 @@ function Home(props) {
                   }
                   alt={"share"}
                 />
-                <p className={cx("title")}>Giao bài tập</p>
+                <p className={cx("title")}>Bài tập đa dạng</p>
               </li>
               <li className={cx("intro-app-feature-item")}>
                 <img
@@ -72,7 +73,7 @@ function Home(props) {
                   }
                   alt={"share"}
                 />
-                <p className={cx("title")}>Thi trực tuyến</p>
+                <p className={cx("title")}>Ebook IT</p>
               </li>
               <li className={cx("intro-app-feature-item")}>
                 <img
@@ -82,7 +83,7 @@ function Home(props) {
                   }
                   alt={"share"}
                 />
-                <p className={cx("title")}>Tổ chức lớp học trực tuyến</p>
+                <p className={cx("title")}>Kho tài liệu Toeic</p>
               </li>
               <li className={cx("intro-app-feature-item")}>
                 <img
@@ -92,7 +93,7 @@ function Home(props) {
                   }
                   alt={"share"}
                 />
-                <p className={cx("title")}>Tạo nhiệm vụ học tập</p>
+                <p className={cx("title")}>Mock test Toeic</p>
               </li>
               <li className={cx("intro-app-feature-item")}>
                 <div className={cx("title")}> Có mặt ở mọi nền tảng</div>
