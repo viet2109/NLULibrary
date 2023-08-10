@@ -7,11 +7,12 @@ import images from '~/assets/images'
 import Button from '~/components/Button';
 
 
+
 HomeHeader.propTypes = {
     
 };
 const cx = classNames.bind(styles)
-const cxHomePage = classNames.bind(require('~/pages/Home/Home.module.scss'));
+
 
 function HomeHeader(props) {
     const handleNavigate = (e) => {
@@ -35,7 +36,7 @@ function HomeHeader(props) {
         <Header>
             <ul className={cx('navigateList')}>
                 <li className={cx('navigateItem', 'active')} onClick={(e) => {handleNavigate(e)}}>
-                    Giới thiệu
+                   Giới thiệu
                 </li>
                 <li className={cx('navigateItem')} onClick={(e) => {handleNavigate(e)}}>Đối tác</li>
                 <li className={cx('navigateItem')} onClick={(e) => {handleNavigate(e)}}>Tính năng</li>

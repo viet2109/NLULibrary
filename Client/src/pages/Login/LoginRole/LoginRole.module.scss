@@ -1,0 +1,37 @@
+.form-login-wrapper {
+  max-width: 1280px;
+  margin: 80px auto 0;
+  padding: 48px 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  .form-login {
+    width: 100%;
+  }
+  .image-wrapper {
+    padding: 48px 0 0 48px;
+    .image {
+      width: 100%;
+      max-height: 70vh;
+      min-height: 70vh;
+      object-fit: contain;
+    }
+  }
+}
+
+@media screen and (min-width: 744px) {
+  .form-login-wrapper {
+    padding: 48px 36px 0;
+  }
+
+  .form-login {
+    flex-basis: 41.667%;
+  }
+
+  .image-wrapper {
+    flex-basis: 58.333%;
+  }
+}
+
+
+

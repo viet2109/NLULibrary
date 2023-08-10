@@ -15,7 +15,7 @@ function Home(props) {
     <>
       <HomeHeader />
       <div className={cx("wrapper")}>
-        <section id={cx("intro")}>
+        <section id={"intro"}>
           <div className={cx("intro-app-wrapper")}>
             <div className={cx("intro-app")}>
               <div className={cx("intro-app-name")}>

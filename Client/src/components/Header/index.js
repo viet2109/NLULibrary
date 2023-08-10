@@ -7,9 +7,9 @@ Header.propTypes = {
     
 };
 const cx = classNames.bind(styles)
-function Header({children}) {
+function Header({className, children}) {
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', className)}>
            {children}
         </div>
     );

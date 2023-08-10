@@ -1,0 +1,125 @@
+.form-login {
+  .title {
+    font-size: 2rem;
+    line-height: 1.334;
+    font-weight: 600;
+    text-align: start;
+    margin-bottom: -10px;
+  }
+
+  .input-wrapper {
+    position: relative;
+
+    #email {
+      display: block;
+    }
+
+    #password {
+      display: block;
+    }
+    margin-top: 28px;
+    .label {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 10px;
+      padding: 0 6px;
+      background-color: #fff;
+      z-index: -1;
+      font-size: 1.4rem;
+      transition: all 0.2s ease-in-out;
+    }
+    .input {
+      width: 100%;
+
+      padding: 16.5px 14px;
+      border: #ccc solid 1px;
+      border-radius: 4px;
+      &:focus {
+        border: var(--primary-color) solid 2px;
+      }
+    }
+
+    .show-hide-icon {
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border-radius: 100%;
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      right: 16px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+
+      &.active {
+        .show-icon {
+          display: block;
+        }
+        .hide-icon {
+          display: none;
+        }
+      }
+
+      .show-icon {
+        display: none;
+      }
+      .hide-icon {
+        display: block;
+      }
+    }
+  }
+
+  .forgot-pass {
+    text-align: end;
+    margin-top: 10px;
+
+    display: inline-block;
+    margin-bottom: 24px;
+    float: right;
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  .notice {
+    color: red;
+    font-size: 1.2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+
+  .login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 12px;
+    .logo-img {
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+      transform: translateY(-8%);
+    }
+  }
+
+  .title-select-login {
+    margin-top: 12px;
+  }
+
+  .signup-link {
+    margin-top: 18px;
+    .link {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+  }
+}

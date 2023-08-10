@@ -1,0 +1,105 @@
+.header-wrapper {
+    max-width: 1280px;
+    box-shadow: none;
+}
+
+
+.home-wrapper {
+    .home-logo {
+        max-height: 40px;
+        cursor: pointer;
+    }
+}
+
+.button-wrapper {
+    display: flex;
+    .button + .button {
+        margin-left: 10px;
+    }
+
+    .home-button {
+        display: none;
+    }
+}
+
+.role-select-wrapper {
+    max-width: 1280px;
+    padding: 0 24px;
+    
+ margin: 80px auto 0;
+ display: flex;
+ flex-wrap: wrap;
+
+}
+
+.role-select {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 48px;
+    flex: 1;
+
+.title {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 2.1125rem;
+    line-height: 1.235;
+    text-align: start;
+
+}
+
+.label {
+color: var(--primary-color);
+margin-top: 32px;
+font-weight: 400;
+font-size: 1.5rem;
+line-height: 1.5;
+text-align: start;
+margin-bottom: 6px;
+}
+.login-button {
+    margin-top: 14px;
+    width: 100%;
+}
+
+}
+
+.image-login {
+    width: 100%;
+    padding-top: 48px;
+    padding-left: 48px;
+
+    .image {
+        width: 100%;
+        height: 70vh;
+        object-fit: contain;
+       
+    }
+}
+
+.select {
+    display: block;
+}
+
+@media screen and (min-width: 744px) {
+    .button-wrapper {
+        .home-button {
+            display: block;
+        }
+
+    }
+    .role-select {
+        flex-basis: 41.667%;
+        max-width: 41.667%;
+    }
+
+    .image-login {
+        flex-basis: 58.333%;
+        max-width: 58.333%;
+        
+    }
+    .role-select-wrapper {
+        padding: 0 36px;
+    }
+    
+}
