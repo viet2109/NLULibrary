@@ -20,9 +20,18 @@ function LoginStudent(props) {
         <LoginHeader></LoginHeader>
         <div className={cx('form-login-wrapper')}>
             <FormLogin classNames={cx('form-login')}></FormLogin>
-            <div className={cx('image-wrapper')}>
+            <div className={cx('image-wrapper', {
+                'active': location.pathname.split('/').slice(-1)[0] === 'student'
+            })}>
                <img className={cx('image')} src={
-                    location.pathname.split('/').slice(-1)[0] === 'student'?'https://shub.edu.vn/images/illustrations/student-illustration.svg':'https://shub.edu.vn/images/illustrations/teacher-illustration.svg'
+                    'https://shub.edu.vn/images/illustrations/student-illustration.svg'
+               } alt='img' />
+            </div>
+            <div className={cx('image-wrapper', {
+                'active' :location.pathname.split('/').slice(-1)[0] === 'teacher'
+            })}>
+               <img className={cx('image')} src={
+                    'https://shub.edu.vn/images/illustrations/teacher-illustration.svg'
                } alt='img' />
             </div>
         </div>

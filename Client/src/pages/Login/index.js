@@ -24,10 +24,12 @@ function Login(props) {
         if (e.value === 'student') {
           setRole("student");
 
-            document.querySelector(`.${cx('image')}`).src = 'https://shub.edu.vn/images/illustrations/student-illustration.svg'
+          document.querySelector(`.${cx('student-image')}`).style.display = "block"
+          document.querySelector(`.${cx('teacher-image')}`).style.display = "none"
         } else if (e.value === 'teacher') {
           setRole("teacher")
-            document.querySelector(`.${cx('image')}`).src = 'https://shub.edu.vn/images/illustrations/teacher-illustration.svg'
+          document.querySelector(`.${cx('student-image')}`).style.display = "none"
+          document.querySelector(`.${cx('teacher-image')}`).style.display = "block"
         }
     }
   return (
@@ -89,11 +91,20 @@ function Login(props) {
             Tiếp tục
           </Button>
         </div>
-        <div className={cx("image-login")}>
+        <div className={cx("image-login", "student-image")}>
           <img
             className={cx("image")}
             src={
               "https://shub.edu.vn/images/illustrations/student-illustration.svg"
+            }
+            alt={"login img"}
+          />
+        </div>
+        <div className={cx("image-login", "teacher-image")}>
+          <img
+            className={cx("image")}
+            src={
+              "https://shub.edu.vn/images/illustrations/teacher-illustration.svg"
             }
             alt={"login img"}
           />
