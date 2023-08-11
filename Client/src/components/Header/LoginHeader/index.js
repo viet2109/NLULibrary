@@ -24,7 +24,12 @@ function LoginHeader(props) {
       </Link>
       <Select
         className={cx("select-wrapper")}
+        
         styles={{
+          option: (styles, state) => ({
+            ...styles,
+            cursor: 'pointer',
+          }),
           control: (baseStyles, state) => ({
             ...baseStyles,
             cursor: "pointer",

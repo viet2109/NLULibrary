@@ -66,6 +66,10 @@ function Login(props) {
           <Select
             className={cx("select")}
             styles={{
+              option: (styles, state) => ({
+                ...styles,
+                cursor: 'pointer',
+              }),
               control: (baseStyles, state) => ({
                 ...baseStyles,
                 cursor: "pointer",

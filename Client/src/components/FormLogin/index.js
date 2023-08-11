@@ -24,7 +24,6 @@ function FormLogin({classNames}) {
         `#${e.target.id} ~ .${cx("label")}`
       ).style.fontSize = "16px";
     }
-    console.log(e.target);
   };
 
   const handleFocusInput = (e) => {

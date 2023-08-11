@@ -13,6 +13,7 @@ function Button({
   small,
   medium,
   round,
+  type,
   onClick,
   to,
   href,
@@ -51,7 +52,9 @@ function Button({
         noneOutline,
         primary,
       })}
+      type={type}
       onClick={onClick}
+      
       {...props}
     >
       <p className={cx("text")}>{children}</p>

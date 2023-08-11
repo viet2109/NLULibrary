@@ -1,0 +1,109 @@
+.input-wrapper {
+   
+    position: relative;
+    flex: 1;
+    margin: 16px 8px 0 0;
+
+    .input-relative {
+        position: relative;
+        
+        .input {
+            width: 100%;
+            padding: 16.5px 14px;
+            border-radius: 10px;
+            height: 60px;
+            cursor: pointer;
+            
+            &:focus {
+                border: var(--primary-color) solid 2px;
+            }
+
+            &.error {
+                border:red solid 2px;
+            }
+            
+        }
+        
+        .label {
+            position: absolute;
+            font-size: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 18px;
+            background-color: #fff;
+            padding: 0 6px;
+            display: flex;
+            z-index: -1;
+            transition: all 0.15s linear 0s;
+            color: var(--black-text);
+            
+            &.date {
+                z-index: 0;
+                user-select: none;
+                cursor: pointer;
+                left: 14px;
+                padding-left: 10px;
+                width: 130px;
+            }
+            &.error {
+                color: red !important;
+            }
+        }
+
+        .icon-wrapper {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 18px;
+            display: flex;
+            padding: 10px;
+            border-radius: 100%;
+
+            &:hover {
+
+                background-color: rgba(0, 0, 0, 0.04);
+            }
+            cursor: pointer;
+
+            &.active {
+                .showIcon {
+                    display: block;
+                }
+    
+                .hideIcon {
+                    display: none;
+                }
+            }
+            
+            .showIcon {
+                display: none;
+            }
+
+            .hideIcon {
+                display: block;
+            }
+        }
+    }
+
+    .notice-error {
+        text-align: start;
+        margin: 6px 0 10px 6px;
+        font-size: 10px;
+    }
+    
+    
+}
+
+// @media screen and (min-width: 744px) {
+//     .input-wrapper {
+//         .input-relative {
+//             .label {
+//                 &.date {
+//                     width: 185px;
+//                 }
+//             }
+//         }
+//     }
+    
+// }
+

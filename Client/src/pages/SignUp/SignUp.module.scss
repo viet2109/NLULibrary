@@ -1,0 +1,76 @@
+.header-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  box-shadow: none;
+
+  .logo-wrapper {
+    max-height: 56px;
+
+    .logo {
+      max-height: 56px;
+      object-fit: contain;
+    }
+
+    .login-button {
+    }
+  }
+}
+
+.body-wrapper {
+   
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px;
+    margin: 128px auto 0;
+    
+  .title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 3rem;
+
+    .des {
+        text-transform: none;
+        color: var(--primary-color);
+    }
+  }
+
+  .select-role-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .select-role {
+        max-width: 412px;
+        padding: 16px;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+            margin: 16px 16px;
+      .select-role-btn {
+        width: 100%;
+        
+
+        &:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+      }
+
+      .image-select {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 744px) {
+
+    .select-role {
+        flex-basis: 33.333%;
+        max-width: 33.333%;
+        flex-grow: 0;
+    }
+
+    .body-wrapper {
+        max-width: 960px;
+    }
+    
+}

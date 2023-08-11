@@ -58,13 +58,18 @@ html {
     border-radius: 0;
     background-color: rgba(0, 0, 0, 0);
   }
+
+ 
+  
+
+  
 }
 
 button,
 input,
 [tabindex] {
   outline: none;
-  border: none;
+  border: #d8dcf0 solid 1px;
   background-color: transparent;
 }
 
@@ -81,3 +86,12 @@ a[href] {
   text-decoration: none;
   color: var(--black-text);
 }
+
+
+
+input[type=date]:focus::-webkit-datetime-edit {
+  
+  color: black ;
+  
+}
+
