@@ -9,31 +9,35 @@ SelectField.propTypes = {};
 const cx = classNames.bind(styles);
 
 function SelectField(props) {
+  const labelRef = useRef();
+  const placehoderRef = useRef();
+
   const [option, setOption] = useState({});
   const { error, field, form, type, label, listOption, children } = props;
   const { name } = field;
   const handleOnFocus = () => {
-    document.querySelector(`#${name} ~ .${cx("label")}`).style.top = "0";
-    document.querySelector(`#${name} ~ .${cx("label")}`).style.fontSize =
+    labelRef.current.style.top = "0";
+    labelRef.current.style.fontSize =
       "12px";
-    document.querySelector(`#${name} ~ .${cx("label")}`).style.color =
+    labelRef.current.style.color =
       "var(--primary-color)";
   };
 
   field.onBlur = (e) => {
-    const text = document.querySelector(`.${cx("placehoder")}`).innerText.trim();
+    const text = placehoderRef.current.innerText.trim();
     if (text === '') {
-      document.querySelector(`#${name} ~ .${cx("label")}`).style.top = "50%";
+      labelRef.current.style.top = "50%";
 
-      document.querySelector(`#${name} ~ .${cx("label")}`).style.fontSize =
+      labelRef.current.style.fontSize =
         "16px";
     }
-    document.querySelector(`#${name} ~ .${cx("label")}`).style.color =
+    labelRef.current.style.color =
       "var(--black-text)";
   };
   const handleSelectedOptionChange = (selectedOption) => {
     form.setFieldValue(field.name, selectedOption.value);
-    document.querySelector(`.${cx("placehoder")}`).innerHTML =
+   
+    placehoderRef.current.innerHTML =
       selectedOption.label;
     setOption((prevOption) => ({
      
@@ -95,12 +99,13 @@ function SelectField(props) {
           onFocus={handleOnFocus}
         />
         <label
+          ref={labelRef}
           className={cx("label", { error: children })}
           onClick={handleFocusInput}
         >
           {label}
         </label>
-        <div className={cx("placehoder")} onClick={handleFocusInput}></div>
+        <div ref={placehoderRef} className={cx("placehoder")} onClick={handleFocusInput}></div>
       </div>
       {children && <div className={cx("notice-error")}>{children}</div>}
     </div>
