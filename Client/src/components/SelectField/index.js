@@ -33,7 +33,7 @@ function SelectField(props) {
   };
   const handleSelectedOptionChange = (selectedOption) => {
     form.setFieldValue(field.name, selectedOption.value);
-    document.querySelector(`.${cx("placehoder")}`).innerText =
+    document.querySelector(`.${cx("placehoder")}`).innerHTML =
       selectedOption.label;
     setOption((prevOption) => ({
      
