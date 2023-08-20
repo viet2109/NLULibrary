@@ -16,7 +16,7 @@ const SignupSchema = yup.object().shape({
   class: yup.string().required("Bạn cần nhập tên lớp"),
   school: yup.string().required("Bạn cần phải nhập tên trường"),
   province: yup.string().required("Hãy chọn một tỉnh"),
-  birthDate: yup.date().required("Bạn cần nhập ngày sinh"),
+  birthDate: yup.date().max(new Date(), "Ngày tháng năm sinh của bạn không đúng").required("Bạn cần nhập ngày sinh"),
   emailPhone: yup
     .string()
     .required("Bạn cần nhập số diện thoại hoặc email")

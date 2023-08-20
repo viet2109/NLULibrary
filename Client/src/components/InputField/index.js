@@ -73,6 +73,7 @@ function InputField(props) {
             error: children,
           })}
           type={type}
+          
           {...field}
           onFocus={(e) => {
             handleOnFocus(e);
