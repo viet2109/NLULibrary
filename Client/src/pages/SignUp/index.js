@@ -6,6 +6,7 @@ import classNames from "classnames/bind";
 import images from "~/assets/images";
 import Button from "~/components/Button";
 import { Link } from "react-router-dom";
+import Logo from "~/components/Logo";
 SignUp.propTypes = {};
 
 const cx = classNames.bind(styles);
@@ -15,11 +16,7 @@ function SignUp(props) {
   return (
     <>
       <Header className={cx("header-wrapper")}>
-        <Link to={"/"}>
-          <div className={cx("logo-wrapper")}>
-            <img className={cx("logo")} src={images.logo} alt="logo" />
-          </div>
-        </Link>
+        <Logo src={images.logoDark} to={'/'} />
         <Link to={"/login"}>
           <Button primary className={cx("login-button")}>
             Đăng nhập

@@ -1,0 +1,20 @@
+.wrapper {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: auto;
+    grid-row: 4;
+}
+
+@media screen and (min-width: 744px) {
+    .wrapper {
+        grid-template-columns: auto auto;
+    grid-row: 4;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .wrapper {
+        grid-template-columns: auto auto auto auto;
+    grid-row: 3;
+    }
+}

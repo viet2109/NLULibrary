@@ -81,14 +81,14 @@ function SelectField(props) {
                 ? "red solid 2px"
                 : state.isFocused
                 ? "var(--primary-color) solid 2px"
-                : "#d8dcf0 solid 1px",
+                : "#d8dcf0 solid 2px",
               boxShadow: "none",
               "&:hover": {
                 border: children
                   ? "red solid 2px"
                   : state.isFocused
                   ? "var(--primary-color) solid 2px"
-                  : "#d8dcf0 solid 1px",
+                  : "#d8dcf0 solid 2px",
               },
               cursor: "pointer",
               borderRadius: 10,

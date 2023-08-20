@@ -7,6 +7,7 @@ import images from "~/assets/images";
 import Button from "~/components/Button";
 import Select from "react-select";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Logo from "~/components/Logo";
 
 
 
@@ -35,21 +36,13 @@ function Login(props) {
   return (
     <>
       <Header className={cx('header-wrapper')}>
-        <Link to={"/"}>
-          <div className={cx("home-wrapper")}>
-            <img
-              className={cx("home-logo")}
-              src={images.logo}
-              alt={"logo web"}
-            ></img>
-          </div>
-        </Link>
+        <Logo src={images.logoDark} to={'/'} />
         <div className={cx("button-wrapper")} >
           <Link to={"/"} className={cx("button", "home-button")}>
             <Button >Trang chủ</Button>
           </Link>
 
-          <Link to={"/signup"}  className={cx("button")}>
+          <Link to={"/signup/form"}  className={cx("button")}>
             
             <Button primary>
               Đăng kí

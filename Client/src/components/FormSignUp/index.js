@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styles from "./FormSignUp.module.scss";
 import classNames from "classnames/bind";
@@ -311,13 +311,14 @@ const listOption = [
   },
   
 ];
-console.log(listOption.length);
+
 listOption.sort((a, b) => a.value.localeCompare(b.value));
 
 function FormSignUp(props) {
   const location = useLocation();
+  location.state.role = 'student';
   return (
-    <div>
+    <Fragment>
       <Formik
         initialValues={{
           name: "",
@@ -498,14 +499,14 @@ function FormSignUp(props) {
 
             <div className={cx("login-back-wrapper")}>
               Đã có tài khoản?{" "}
-              <Link className={cx("login-back")} to={"/login"}>
+              <Link className={cx("login-back")} to={"/login/student"}>
                 Đăng nhập ngay
               </Link>
             </div>
           </Form>
         )}
       </Formik>
-    </div>
+    </Fragment>
   );
 }
 

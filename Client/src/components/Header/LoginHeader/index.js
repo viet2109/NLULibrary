@@ -8,6 +8,7 @@ import Select from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getValue } from "@testing-library/user-event/dist/utils";
 import { Link } from "react-router-dom";
+import Logo from "~/components/Logo";
 
 LoginHeader.propTypes = {};
 
@@ -19,9 +20,11 @@ function LoginHeader(props) {
 
   return (
     <Header className={cx('header-wrapper')}>
-      <Link to={'/'} className={cx("logo-wrapper")}>
-        <img className={cx("logo")} src={images.logo} alt="logo" />
-      </Link>
+      
+        <Logo src={images.logoDark} to={'/'} >
+          
+        </Logo>
+      
       <Select
         className={cx("select-wrapper")}
         
@@ -33,6 +36,7 @@ function LoginHeader(props) {
           control: (baseStyles, state) => ({
             ...baseStyles,
             cursor: "pointer",
+            display: 'none',
             borderColor: state.isFocused ? "#6cb52d" : "#ccc",
           }),
         }}

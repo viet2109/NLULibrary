@@ -2,6 +2,7 @@
 
 :root {
   --primary-color: #6cb52d;
+  --primary-color-hover: #6edb0e;
   --black-text: #333;
 }
 
@@ -39,6 +40,7 @@
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -58,18 +60,21 @@ html {
     border-radius: 0;
     background-color: rgba(0, 0, 0, 0);
   }
+}
 
- 
-  
-
-  
+body {
+  &.hidden {
+    overflow: hidden;
+    display: block;
+    padding-right: 8px;
+  }
 }
 
 button,
 input,
 [tabindex] {
   outline: none;
-  border: #d8dcf0 solid 1px;
+  border: #d8dcf0 solid 2px;
   background-color: transparent;
 }
 
@@ -87,11 +92,57 @@ a[href] {
   color: var(--black-text);
 }
 
-
-
-input[type=date]:focus::-webkit-datetime-edit {
-  
-  color: black ;
-  
+input[type="date"]:focus::-webkit-datetime-edit {
+  color: black;
 }
 
+#intro {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 160px 24px 24px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#feature {
+  padding-top: 80px;
+}
+
+#partner {
+}
+
+#contact {
+  position: relative;
+}
+
+img {
+  opacity: 1;
+  animation: imageOn 1s linear 0s  alternate forwards;
+}
+
+@keyframes imageOn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+@media screen and (min-width: 744px) {
+  #intro {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  #contact {
+    
+    padding-bottom: 52px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+}

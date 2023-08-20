@@ -1,0 +1,31 @@
+.wrapper {
+   
+    .swipper { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        transition: 1s;
+
+        
+
+        .slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 66px;
+           
+           
+
+            .logo {
+                object-fit: cover;
+               width: 60px;
+               aspect-ratio: auto 60 / 60;
+               height: 60px;
+              
+        
+            }
+        }
+
+    }
+}

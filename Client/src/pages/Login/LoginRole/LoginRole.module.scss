@@ -12,7 +12,7 @@
     padding-top: 48px ;
     display: none;
     opacity: 1;
-    animation: imageShowOn 0.5s linear 0s alternate forwards;
+   
     .image {
       
       width: 100%;
@@ -27,15 +27,6 @@
   }
 }
 
-@keyframes imageShowOn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
 
 @media screen and (min-width: 744px) {
   .form-login-wrapper {

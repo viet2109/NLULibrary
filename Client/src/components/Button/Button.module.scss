@@ -9,6 +9,10 @@
   justify-content: center;
   align-items: center;
   transition: all 0.2s linear 0s;
+
+  &:hover {
+    background-color: #c5c5d2;
+  }
   
   &.disabled {
     cursor: not-allowed;
@@ -28,12 +32,17 @@
   }
   
   &.noneOutline {
-    background-color: transparent;
+   
+    border: 0;
   }
   
   &.primary {
     color: #fff ;
     background-color: var(--primary-color);
+
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
   }
   
   .text {
