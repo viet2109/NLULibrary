@@ -57,7 +57,7 @@ function Button({
       
       {...props}
     >
-      <p className={cx("text")}>{children}</p>
+      <p className={cx("text")} onClick={onClick} >{children}</p>
     </Comp>
   );
 }

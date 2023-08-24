@@ -15,6 +15,7 @@ function HomeHeader(props) {
  
   const handleExit = (e) => {
     if (e.currentTarget === e.target) {
+      
       document.querySelector("body").classList.toggle("hidden");
       document.querySelector(`.${cx("menuListWrapper")}`).style.left = "2000px";
       document.querySelector(`.${cx("menuList")}`).style.right = "-1000px";
@@ -153,10 +154,10 @@ function HomeHeader(props) {
               </HashLink>
             </li>
           </ul>
-          <Button to={"/login/student"} className={cx("login")}>
+          <Button to={"/login/student"} className={cx("login")} onClick={(e) => {handleExit(e)}}>
             Đăng nhập
           </Button>
-          <Button to={"/signup/form"} primary className={cx("signup")}>
+          <Button to={"/signup/form"} primary className={cx("signup")} onClick={(e) => {handleExit(e)}}>
             Đăng kí
           </Button>
         </div>
