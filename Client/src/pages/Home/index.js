@@ -124,7 +124,7 @@ function Home(props) {
                 " Nắng giảng đường Phượng Vỹ ghi dấu chân tuổi trẻ, ở đâu bán
                 tài liệu giá rẻ chứ ở đây FREE "
               </p>
-              <Button to={"/signup"} primary className={cx("signup")}>
+              <Button to={"/signup/form"} primary className={cx("signup")}>
                 Tham gia ngay
               </Button>
             </div>
