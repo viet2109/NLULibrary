@@ -1,0 +1,53 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  .swiper {
+    .swiper-slide {
+      .swiper-img-wrapper {
+        .swiper-img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .nav-button {
+    width: 48px;
+    height: 48px;
+    background: rgb(255, 255, 255);
+    position: absolute;
+    top: 50%;
+
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: rgba(21, 25, 28, 0.25) 0px 16px 16px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:has(.prev-but) {
+      transform: translate(-50%,-50%);
+      left: 0;
+     
+    }
+
+    &:has(.next-but) {
+      transform: translate(50%, -50%);
+    
+
+      right: 0;
+    }
+
+    .prev-but,
+    .next-but {
+      width: 48px;
+      height: 48px;
+      padding: 13px;
+      color: rgba(0, 0, 0, 0.54);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+    }
+  }
+}

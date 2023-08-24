@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./SlideShowComment.module.scss";
 import classNames from "classnames/bind";
-import { ArrowLeftType2, ArrowRightType2 } from "../Icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -12,7 +11,8 @@ import "swiper/scss/navigation";
 import "swiper/scss/thumbs";
 
 // import required modules
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Navigation } from "swiper/modules";
+import { ArrowLeftType2, ArrowRightType2 } from "../Icons";
 
 SlideShowComment.propTypes = {};
 
@@ -31,94 +31,109 @@ for (let i = 0; i < 10; i++) {
 }
 
 function SlideShowComment(props) {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const galleryThumbs = useRef(null);
+  const galleryBottom = useRef(null);
 
   return (
     <div className={cx("wrapper")}>
       <div className={cx("pagination-wrapper")}>
-        <ArrowLeftType2 className={cx('prev-button')} />
+        <div className={cx("button-wrapper")}>
+          <ArrowLeftType2 className={cx("prev-button")} />
+        </div>
         <Swiper
-          onSwiper={(e) => {
-            
-            
-            setThumbsSwiper(e);
-          }}
-         
-         
-          allowTouchMove={false}
-          loop={true}
-          spaceBetween={10}
-          centeredSlides={true}
-          slidesPerView={5}
-          freeMode={true}
-          watchSlidesProgress={true}
-          controller={{
-            control: `.${cx('')}`
-          }}
-          modules={[FreeMode, Navigation, Thumbs]}
-          navigation={{
-            nextEl: `.${cx('next-button')}`,
-            prevEl: `.${cx('prev-button')}`,
-          }}
+          loop
+          ref={galleryThumbs}
           
-          className={cx("card-list")}
-         
+          spaceBetween={16}
+          centeredSlides
+          slideToClickedSlide
+          slidesPerView={2}
+          breakpoints={{
+            744: {
+              slidesPerView: 3,
+              allowTouchMove: false
+            }
+            
+          }}
+          navigation={{
+            prevEl: `.${cx("prev-button")}`,
+            nextEl: `.${cx("next-button")}`,
+          }}
+          onSlideChangeTransitionStart={(e) => {
+            if (galleryBottom.current) {
+              galleryBottom.current.swiper.slideTo(e.realIndex);
+            }
+          }}
+          modules={[Navigation]}
+          className={cx("gallery-thumb")}
         >
           {listComment.map((comment, index) => {
             return (
-              <SwiperSlide key={index} className={cx("swipper-slide")}>
-                {/* {({isActive}) => (
-                <div className={cx('card', {
-                  'active': isActive
-                })}>
-                  <img className={cx('avatar')} src={comment.image} alt="avatar" />
-                  <div className={cx('comment')}>
-                   
-                  </div>
-                </div>
+              <SwiperSlide key={index} className={cx("card-item-wrapper")}>
                 
-              )} */}
+                {({ isActive }) => (
 
-                {comment.name}
+                  <div className={cx('card-item', {
+                    active: isActive
+                  })}>
+                      <div className={cx("avatar-wrapper", {
+                  active: isActive
+                })}>
+                  <img
+                    className={cx("avatar")}
+                    src={comment.image}
+                    alt="avatar"
+                  />
+                </div>
+                  </div>
+                  
+                
+                )}
+
               </SwiperSlide>
             );
           })}
         </Swiper>
 
-        <ArrowRightType2 className={cx("next-button")} />
+        <div className={cx("button-wrapper")}>
+          <ArrowRightType2 className={cx("next-button")} />
+        </div>
       </div>
 
       <div className={cx("swiper-wrapper")}>
         <img
+         className={cx('image-left')}
           src="https://shub.edu.vn/images/landing/ver3/monument-section/left-decoration.svg"
           alt="background"
         />
-        <Swiper
-       
-         loop={true}
-
-         spaceBetween={10}
-         allowTouchMove={false}
-          centeredSlides
-        navigation={{
-            nextEl: `.${cx('next-button')}`,
-            prevEl: `.${cx('prev-button')}`,
-          }}
-         thumbs={{ swiper: thumbsSwiper }}
-         modules={[FreeMode, Navigation, Thumbs]}
-         onSlideChange={(e) => {
-          console.log(e.realIndex);
-          console.log(e.activeIndex);
-          e.changeDirection()
-          document.querySelector(`.${cx('card-list')}`).swiper.slideTo(e.realIndex+4)}}
-         
-          className={cx('main-card')}
-        >
-          {listComment.map((comment, index) => {
-            return <SwiperSlide key={index}>{comment.name}</SwiperSlide>;
-          })}
-        </Swiper>
+        <div className={cx('gallery-bottom-wrapper-relative')}>
+          <div className={cx('gallery-bottom-wrapper')}>
+            <Swiper
+              ref={galleryBottom}
+              allowTouchMove={false}
+              grabCursor
+              className={cx("gallery-bottom")}
+            >
+              {listComment.map((comment, index) => {
+                return <SwiperSlide key={index} className={cx('main-card-wrapper')}>
+                  <div className={cx('intro')}>
+                    <div className={cx('detail-intro')}>
+                      <p className={cx('school')}>{comment.school}</p>
+                      <p className={cx('name')}>{comment.name}</p>
+                    </div>
+                    <img className={cx('avatar')} src={comment.image} alt="avatar" />
+                  </div>
+                  <p className={cx('comment')}>
+                    {comment.des}
+                  </p>
+                  </SwiperSlide>;
+              })}
+            </Swiper>
+          </div>
+        </div>
         <img
+         className={cx('image-right')}
+
           src="https://shub.edu.vn/images/landing/ver3/monument-section/right-decoration.svg"
           alt="background"
         />

@@ -73,30 +73,37 @@ function FormLogin({ classNames }) {
             
           >
             <h1 className={cx("title")}>Bạn đang thực hiện đăng nhập</h1>
-            <FastField
-              error={errors.emailPhone && touched.emailPhone}
-              name="emailPhone"
-              label="Số điện thoại / Email"
-              component={InputField}
-            >
-              {errors.emailPhone && touched.emailPhone ? (
-                <div style={{ color: "red", fontSize: "12px" }}>
-                  {errors.emailPhone}
-                </div>
-              ) : null}
-            </FastField>
-            <FastField
-              error={errors.password && touched.password}
-              name="password"
-              label="Mật khẩu"
-              component={InputField}
-            >
-              {errors.password && touched.password ? (
-                <div style={{ color: "red", fontSize: "12px" }}>
-                  {errors.password}
-                </div>
-              ) : null}
-            </FastField>
+            <div className={cx('input-field')}>
+              <FastField
+                error={errors.emailPhone && touched.emailPhone}
+                name="emailPhone"
+                label="Số điện thoại / Email"
+                component={InputField}
+              >
+                {errors.emailPhone && touched.emailPhone ? (
+                  <div style={{ color: "red", fontSize: "12px" }}>
+                    {errors.emailPhone}
+                  </div>
+                ) : null}
+              </FastField>
+            </div>
+
+            <div className={cx('input-field')}>
+              <FastField
+                error={errors.password && touched.password}
+                name="password"
+                label="Mật khẩu"
+                type = "password"
+                component={InputField}
+              >
+                {errors.password && touched.password ? (
+                  <div style={{ color: "red", fontSize: "12px" }}>
+                    {errors.password}
+                  </div>
+                ) : null}
+              </FastField>
+            </div>
+
             <Link className={cx("forgot-pass")} to={"/"}>
               Quên mật khẩu ?
             </Link>

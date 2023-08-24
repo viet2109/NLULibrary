@@ -6,11 +6,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/scss";
-import "swiper/scss/pagination";
-import "swiper/scss/navigation";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 SlideShow.propTypes = {};
 const logo = [];
@@ -27,6 +25,7 @@ function SlideShow(props) {
   return (
     <div className={cx("wrapper")}>
       <Swiper
+        loop
         spaceBetween={24}
         slidesPerView={5}
         allowTouchMove={false}
@@ -44,7 +43,7 @@ function SlideShow(props) {
           delay:1500,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay]}
         className={cx("swipper")}
       >
         {logo.map((src, index) => {

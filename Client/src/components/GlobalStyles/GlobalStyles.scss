@@ -41,6 +41,10 @@
   line-height: 1.5;
   text-rendering: optimizeSpeed;
   scroll-behavior: smooth;
+  ::selection {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
 }
 
 html {
@@ -118,7 +122,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 img {
   opacity: 1;
-  animation: imageOn 1s linear 0s  alternate forwards;
+  animation: imageOn 1s linear 0s alternate forwards;
 }
 
 @keyframes imageOn {
@@ -130,7 +134,10 @@ img {
   }
 }
 
-
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
 
 @media screen and (min-width: 744px) {
   #intro {
@@ -139,7 +146,6 @@ img {
   }
 
   #contact {
-    
     padding-bottom: 52px;
   }
 }

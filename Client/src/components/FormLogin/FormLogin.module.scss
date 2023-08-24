@@ -6,6 +6,10 @@
     text-align: start;
   }
 
+  .input-field {
+    margin-right: -8px;
+  }
+
   .input-wrapper {
     position: relative;
 
@@ -46,7 +50,11 @@
     margin-top: 18px;
     .link {
       color: var(--primary-color);
-      text-decoration: underline;
+      
+      &:hover {
+        text-decoration: underline;
+
+      }
     }
   }
 }
