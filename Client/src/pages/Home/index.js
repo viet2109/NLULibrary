@@ -63,7 +63,6 @@ function Home(props) {
   };
 
   const scrollNav = () => {
-    console.log(1);
     const listSection = document.querySelectorAll(`.${cx("section")}`);
     listSection.forEach((item, index) => {
       if (isInViewPort(item)) {

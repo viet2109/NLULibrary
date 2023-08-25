@@ -16,17 +16,22 @@ function HomeHeader(props) {
   const handleExit = (e) => {
     if (e.currentTarget === e.target) {
       
-      document.querySelector("body").classList.toggle("hidden");
-      document.querySelector(`.${cx("menuListWrapper")}`).style.left = "2000px";
-      document.querySelector(`.${cx("menuList")}`).style.right = "-1000px";
+      document.querySelector("body").classList.remove("hidden");
+      document.querySelector(`.${cx("menuListWrapper")}`).style.right = "-100%";
+    document.querySelector(`.${cx("menuListWrapper")}`).style.opacity = "0";
+    document.querySelector(`.${cx("menuList")}`).style.right = "-350px";
+
+
     }
   };
 
   const handleOpenMenu = (e) => {
-    document.querySelector("body").classList.toggle("hidden");
-
-    document.querySelector(`.${cx("menuListWrapper")}`).style.left = "0";
+    document.querySelector("body").classList.add("hidden");
+    document.querySelector(`.${cx("menuListWrapper")}`).style.right = "0";
+    document.querySelector(`.${cx("menuListWrapper")}`).style.opacity = "1";
     document.querySelector(`.${cx("menuList")}`).style.right = "0";
+
+
   };
 
   return (
