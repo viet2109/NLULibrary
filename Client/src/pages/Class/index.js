@@ -8,7 +8,7 @@ Class.propTypes = {
 function Class(props) {
     return (
         <div>
-            
+            Class
         </div>
     );
 }

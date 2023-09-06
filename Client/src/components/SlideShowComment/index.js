@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useRef } from "react";
 import PropTypes from "prop-types";
 import styles from "./SlideShowComment.module.scss";
 import classNames from "classnames/bind";

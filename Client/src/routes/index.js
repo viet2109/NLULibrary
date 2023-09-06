@@ -17,8 +17,10 @@ const router = {
     overview: "/overview",
     class: "/class",
     schedule: "/schedule",
-    home: "/"
+    home: "/",
+    
 }
+
 
 const routes = [
     {path: router.home, page: Home, layout: Defaultlayout},

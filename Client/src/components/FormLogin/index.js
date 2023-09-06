@@ -2,12 +2,13 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styles from "./FormLogin.module.scss";
 import classNames from "classnames/bind";
-import { HidePass, ShowPass } from "~/components/Icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../Button";
 import * as yup from "yup";
 import { FastField, Form, Formik } from "formik";
 import InputField from "../InputField";
+import { loginUser } from "~/redux/apiRequest";
+import { useDispatch } from "react-redux";
 
 FormLogin.propTypes = {};
 const cx = classNames.bind(styles);
@@ -45,10 +46,10 @@ const handleShowHidePass = (e) => {
     : "password";
 };
 
-const handleSubmit = (e) => {
-  // call API
-};
+
 function FormLogin({ classNames }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const LoginSchema = yup.object().shape({
     emailPhone: yup.string().required("Bạn cần nhập số diện thoại hoặc email"),
     password: yup.string().required("Bạn cần nhập mật khẩu"),
@@ -62,12 +63,11 @@ function FormLogin({ classNames }) {
           password: "",
         }}
         validationSchema={LoginSchema}
-        onSubmit={(values) => {
-          // same shape as initial values
-          console.log(values);
+        onSubmit={(user) => {
+         loginUser(user, dispatch, navigate)
         }}
       >
-        {({ values, errors, touched }) => (
+        {({ errors, touched }) => (
           <Form
             className={cx("form-login", classNames)}
             

@@ -14,7 +14,6 @@ import SlideShowComment from "~/components/SlideShowComment";
 import SmoothSlide from "~/components/SmoothSlide";
 import CommunicateSlide from "~/components/CommunicateSlide";
 import homeHeaderStyles from "./HomeHeader";
-import ReactVisibilitySensor from "react-visibility-sensor";
 
 Home.propTypes = {};
 
