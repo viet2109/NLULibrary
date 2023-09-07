@@ -22,12 +22,16 @@
 
     display: inline-block;
     margin-bottom: 24px;
-    float: right;
+    width: 100%;
     &:hover {
       color: var(--primary-color);
     }
   }
-
+  .notice {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+  }
   .login-button {
     display: flex;
     align-items: center;
@@ -50,11 +54,11 @@
     margin-top: 18px;
     .link {
       color: var(--primary-color);
-      
+
       &:hover {
         text-decoration: underline;
-
       }
     }
   }
 }
+

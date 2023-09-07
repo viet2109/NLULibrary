@@ -8,7 +8,8 @@ import InputField from "../InputField";
 import Button from "../Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { registerNewUser } from "~/redux/apiRequest";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../Loading";
 
 FormSignUp.propTypes = {};
 
@@ -39,268 +40,17 @@ const SignupSchema = yup.object().shape({
 
 const cx = classNames.bind(styles);
 
-const listOption = [
-  {
-    value: "an giang",
-    label: "An Giang",
-  },
-  {
-    value: "ho chi minh",
-    label: "TP. Hồ Chí Minh",
-  },
-  {
-    value: "ba ria vung tau",
-    label: "Bà Rịa - Vũng Tàu",
-  },
-  {
-    value: "binh duong",
-    label: "Bình Dương",
-  },
-  {
-    value: "binh phuoc",
-    label: "Bình Phước",
-  },
-  {
-    value: "binh thuan",
-    label: "Bình Thuận",
-  },
-  {
-    value: "binh đinh",
-    label: "Bình Định",
-  },
-  {
-    value: "bac lieu",
-    label: "Bạc Liêu",
-  },
-  {
-    value: "bac giang",
-    label: "Bắc Giang",
-  },
-  {
-    value: "bac kan",
-    label: "Bắc Kạn",
-  },
-  {
-    value: "bac ninh",
-    label: "Bắc Ninh",
-  },
-  {
-    value: "ben tre",
-    label: "Bến Tre",
-  },
-  {
-    value: "cao bang",
-    label: "Cao Bằng",
-  },
-  {
-    value: "ca mau",
-    label: "Cà Mau",
-  },
-  {
-    value: "can tho",
-    label: "Cần Thơ",
-  },
-  {
-    value: "gia lai",
-    label: "Gia Lai",
-  },
-  {
-    value: "ha giang",
-    label: "Hà Giang",
-  },
-  {
-    value: "ha nam",
-    label: "Hà Nam",
-  },
-  {
-    value: "ha noi",
-    label: "Hà Nội",
-  },
-  {
-    value: "ha tinh",
-    label: "Hà Tĩnh",
-  },
-  {
-    value: "hoa binh",
-    label: "Hòa Bình",
-  },
-  {
-    value: "hung yen",
-    label: "Hưng Yên",
-  },
-  {
-    value: "hai duong",
-    label: "Hải Dương",
-  },
-  {
-    value: "hai phong",
-    label: "Hải Phòng",
-  },
-  {
-    value: "hau giang",
-    label: "Hậu Giang",
-  },
-  {
-    value: "khanh hoa",
-    label: "Khánh Hòa",
-  },
-  {
-    value: "kien giang",
-    label: "Kiên Giang",
-  },
-  {
-    value: "kon tum",
-    label: "Kon Tum",
-  },
-  {
-    value: "lai chau",
-    label: "Lai Châu",
-  },
-  {
-    value: "long an",
-    label: "Long An",
-  },
-  {
-    value: "lao cai",
-    label: "Lào Cai",
-  },
-  {
-    value: "lam dong",
-    label: "Lâm Đồng",
-  },
-  {
-    value: "lang son",
-    label: "Lạng Sơn",
-  },
-  {
-    value: "nam dinh",
-    label: "Nam Định",
-  },
-  {
-    value: "nghe an",
-    label: "Nghệ An",
-  },
-  {
-    value: "ninh binh",
-    label: "Ninh Bình",
-  },
-  {
-    value: "ninh thuan",
-    label: "Ninh Thuận",
-  },
-  {
-    value: "phu tho",
-    label: "Phú Thọ",
-  },
-  {
-    value: "phu yen",
-    label: "Phú Yên",
-  },
-  {
-    value: "quang binh",
-    label: "Quảng Bình",
-  },
-  {
-    value: "quang nam",
-    label: "Quảng Nam",
-  },
-  {
-    value: "quang ngai",
-    label: "Quãng Ngãi",
-  },
-  {
-    value: "quang ninh",
-    label: "Quảng Ninh",
-  },
-  {
-    value: "quang tri",
-    label: "Quảng Trị",
-  },
-  {
-    value: "soc trang",
-    label: "Sóc Trăng",
-  },
-  {
-    value: "son la",
-    label: "Sơn La",
-  },
-  {
-    value: "thanh hoa",
-    label: "Thanh Hóa",
-  },
-  {
-    value: "thai binh",
-    label: "Thái Bình",
-  },
-  {
-    value: "thai nguyen",
-    label: "Thái Nguyên",
-  },
-  {
-    value: "thua thien hue",
-    label: "Thừa Thiên Huế",
-  },
-  {
-    value: "tien giang",
-    label: "Tiền Giang",
-  },
-  {
-    value: "tra vinh",
-    label: "Trà Vinh",
-  },
-  {
-    value: "tuyen quang",
-    label: "Tuyên Quang",
-  },
-  {
-    value: "tay ninh",
-    label: "Tây Ninh",
-  },
-  {
-    value: "vinh long",
-    label: "Vĩnh Long",
-  },
-  {
-    value: "vinh phuc",
-    label: "Vĩnh Phúc",
-  },
-  {
-    value: "yen bai",
-    label: "Yên Bái",
-  },
-  {
-    value: "dien bien",
-    label: "Điện Biên",
-  },
-  {
-    value: "da nang",
-    label: "Đà Nẵng",
-  },
-  {
-    value: "dak lak",
-    label: "Đắk Lắk",
-  },
-  {
-    value: "dak nong",
-    label: "Đắk Nông",
-  },
-  {
-    value: "dong nai",
-    label: "Đồng Nai",
-  },
-  {
-    value: "dong thap",
-    label: "Đồng Tháp",
-  },
-];
 
-listOption.sort((a, b) => a.value.localeCompare(b.value));
+
 
 function FormSignUp(props) {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   location.state.role = "student";
+  const error = useSelector((state) => state.auth.register.error)
+  const isFetching = useSelector(state => state.auth.register.isFetching)
+  
   return (
     <Fragment>
       <Formik
@@ -327,12 +77,14 @@ function FormSignUp(props) {
         }}
       >
         {({ errors, touched }) => (
+          
           <Form className={cx("form")}>
             <div className={cx("info", "user-info")}>
               <h1 className={cx("title")}>Thông tin cá nhân</h1>
               <FastField
                 error={errors.name && touched.name}
                 name="name"
+                
                 label="Họ và tên"
                 component={InputField}
               >
@@ -341,6 +93,7 @@ function FormSignUp(props) {
                     {errors.name}
                   </div>
                 ) : null}
+                
               </FastField>
 
               <div className={cx("field-wrapper")}>
@@ -348,6 +101,7 @@ function FormSignUp(props) {
                   <FastField
                     error={errors.name && touched.name}
                     name="className"
+                    
                     label="Lớp"
                     component={InputField}
                   >
@@ -362,6 +116,7 @@ function FormSignUp(props) {
                 <FastField
                   error={errors.name && touched.name}
                   name="school"
+                  
                   label="Trường"
                   component={InputField}
                 >
@@ -377,6 +132,7 @@ function FormSignUp(props) {
                 <FastField
                   error={errors.name && touched.name}
                   name="dob"
+                  
                   label="Ngày sinh"
                   type="date"
                   component={InputField}
@@ -396,6 +152,7 @@ function FormSignUp(props) {
               <FastField
                 error={errors.name && touched.name}
                 name="email"
+                
                 label="Email"
                 component={InputField}
               >
@@ -410,6 +167,7 @@ function FormSignUp(props) {
                 <FastField
                   error={errors.name && touched.name}
                   name="password"
+                  
                   label="Mật khẩu"
                   component={InputField}
                   type="password"
@@ -425,6 +183,7 @@ function FormSignUp(props) {
               <FastField
                 error={errors.name && touched.name}
                 name="confirmPassword"
+                
                 label="Xác nhận mật khẩu"
                 type="password"
                 component={InputField}
@@ -436,6 +195,8 @@ function FormSignUp(props) {
                 ) : null}
               </FastField>
             </div>
+              
+                  {error?<p className={cx('error-email')}>Địa chỉ email đã tồn tại</p>:<Fragment></Fragment>}
 
             <Button type={"submit"} className={cx("sigup-btn")} primary>
               Đăng kí
@@ -450,6 +211,7 @@ function FormSignUp(props) {
           </Form>
         )}
       </Formik>
+    {isFetching && <Loading text={"Đang đăng kí"} />}
     </Fragment>
   );
 }

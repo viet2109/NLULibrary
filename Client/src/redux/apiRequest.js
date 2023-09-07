@@ -24,6 +24,7 @@ export const registerNewUser = async(user,dispatch, navigate) => {
         dispatch(registerSuccess())
         navigate('/login/student')
     } catch (error) {
+        
         dispatch(registerFailed())
     }
 }

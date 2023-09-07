@@ -25,13 +25,8 @@ function InputField(props) {
       "12px";
     document.querySelector(`#${name} ~ .${cx("label")}`).style.color =
       "var(--primary-color)";
-    if (name.toLowerCase().includes("date")) {
-      document.querySelector(`#${name} ~ .${cx("label")}`).style.top = "0";
-      document.querySelector(`#${name} ~ .${cx("label")}`).style.zIndex = "0";
-      document.querySelector(`#${name} ~ .${cx("label")}`).style.fontSize =
-        "12px";
-      document.querySelector(`#${name} ~ .${cx("label")}`).style.color =
-        "var(--primary-color)";
+    if (name.toLowerCase().includes("dob")) {
+      
         document.querySelector(`#${name} ~ .${cx("label")}`).style.width =
         "fit-content";
         document.querySelector(`#${name} ~ .${cx("label")}`).style.left =
@@ -41,16 +36,17 @@ function InputField(props) {
 
         document.querySelector(`#${name}`).focus();
     }
+    
   };
 
-  field.onBlur = (e) => {
-    console.log(1);
+  const handleOnBlur = (e) => {
+   
     if (e.target.value === "") {
       document.querySelector(`#${name} ~ .${cx("label")}`).style.top = "50%";
       document.querySelector(`#${name} ~ .${cx("label")}`).style.zIndex = "-1";
       document.querySelector(`#${name} ~ .${cx("label")}`).style.fontSize =
         "16px";
-        if (name.toLowerCase().includes("date")) {
+        if (name.toLowerCase().includes("dob")) {
           document.querySelector(`#${name} ~ .${cx("label")}`).style.zIndex = "0";
           document.querySelector(`#${name} ~ .${cx("label")}`).style.width = "130px";
           document.querySelector(`#${name} ~ .${cx("label")}`).style.left =
@@ -75,6 +71,9 @@ function InputField(props) {
           type={type}
           
           {...field}
+          onBlur={(e) => {
+            handleOnBlur(e);
+          }}
           onFocus={(e) => {
             handleOnFocus(e);
           }}

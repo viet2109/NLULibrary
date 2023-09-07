@@ -8,8 +8,9 @@ import * as yup from "yup";
 import { FastField, Form, Formik } from "formik";
 import InputField from "../InputField";
 import { loginUser } from "~/redux/apiRequest";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import images from "~/assets/images";
+import Loading from "../Loading";
 
 FormLogin.propTypes = {};
 const cx = classNames.bind(styles);
@@ -17,6 +18,8 @@ const cx = classNames.bind(styles);
 function FormLogin({ classNames }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const error = useSelector((state) => state.auth.login.error)
+  const isFetching = useSelector((state) => state.auth.login.isFetching)
   const LoginSchema = yup.object().shape({
     email: yup.string().required("Bạn cần nhập số diện thoại hoặc email"),
     password: yup.string().required("Bạn cần nhập mật khẩu"),
@@ -75,8 +78,8 @@ function FormLogin({ classNames }) {
             <Link className={cx("forgot-pass")} to={"/"}>
               Quên mật khẩu ?
             </Link>
-
-            <p className={cx("notice")}></p>
+                  {error?<p className={cx("notice")}>Địa chỉ email hoặc mật khẩu không đúng</p>:<Fragment></Fragment>}
+                 
             <Button
               type={"submit"}
               className={cx("login-button")}
@@ -111,6 +114,8 @@ function FormLogin({ classNames }) {
           </Form>
         )}
       </Formik>
+                  {isFetching&& <Loading text={'Đang đăng nhập'} />}
+      
     </Fragment>
   );
 }
