@@ -8,7 +8,7 @@ const ax = axios.create({
 export const loginUser = async(user, dispatch, navigate) => {
     dispatch(loginStart())
     try {
-        const res = await ax.post('auth/login', user);
+        const res = await ax.get('auth/login', user);
         dispatch(loginSuccess(res.data))
         navigate('/class');
     } catch (error) {
