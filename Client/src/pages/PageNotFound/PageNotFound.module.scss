@@ -1,0 +1,59 @@
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .not-found {
+        background: url('https://colorlib.com/etc/404/colorlib-error-404-10/img/bg.jpg') no-repeat;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        background-size: cover;
+        background-position: center;
+        font-size: 112px;
+        font-weight: 900;
+        height: 142px;
+        margin-bottom: 15px;
+        &::selection {
+            -webkit-text-fill-color: #fff;
+        }
+    }
+    
+    .title {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+    }
+    
+    .des {
+        font-size: 14px;
+        margin-bottom: 15px;
+        width: 100%;
+        max-width: 410px;
+    }
+    
+    .home-button {
+        border-radius: 90px;
+        width: fit-content;
+        box-shadow: 0 4px 15px -5px var(--primary-color);
+        p {
+            padding: 15px 30px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+@media screen and (min-width: 744px) {
+    .wrapper {
+        .not-found {
+            font-size: 230px;
+            height: 280px;
+        }
+    }
+}
+

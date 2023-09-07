@@ -7,6 +7,7 @@ import Schedule from "~/pages/Schedule"
 import Defaultlayout from "~/layouts/DefaultLayout"
 import LoginRole from "~/pages/Login/LoginRole"
 import SignUpRole from "~/pages/SignUp/SignUpRole"
+import PageNotFound from "~/pages/PageNotFound"
 
 const router = {
     loginStudent: "/login/student",
@@ -18,6 +19,7 @@ const router = {
     class: "/class",
     schedule: "/schedule",
     home: "/",
+    pageNotFound: "*"
     
 }
 
@@ -32,6 +34,7 @@ const routes = [
     {path: router.overview, page: Overview, layout: Defaultlayout},
     {path: router.class, page: Class, layout: Defaultlayout},
     {path: router.schedule, page: Schedule, layout: Defaultlayout},
+    {path: router.pageNotFound, page: PageNotFound, layout: Defaultlayout},
 ]
 
 export default routes;
