@@ -9,7 +9,7 @@ InputField.propTypes = {};
 const cx = classNames.bind(styles);
 
 function InputField(props) {
-  const { error, type, label, field, children } = props;
+  const { type, label, field, children } = props;
   const { name } = field;
   const handleShowHidePass = (e) => {
     e.currentTarget.classList.toggle(`${cx("active")}`);
@@ -44,7 +44,7 @@ function InputField(props) {
   };
 
   field.onBlur = (e) => {
-    
+    console.log(1);
     if (e.target.value === "") {
       document.querySelector(`#${name} ~ .${cx("label")}`).style.top = "50%";
       document.querySelector(`#${name} ~ .${cx("label")}`).style.zIndex = "-1";

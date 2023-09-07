@@ -9,49 +9,16 @@ import { FastField, Form, Formik } from "formik";
 import InputField from "../InputField";
 import { loginUser } from "~/redux/apiRequest";
 import { useDispatch } from "react-redux";
+import images from "~/assets/images";
 
 FormLogin.propTypes = {};
 const cx = classNames.bind(styles);
-
-const handleBlurInput = (e) => {
-  if (e.target.value === "") {
-    document.querySelector(`#${e.target.id} ~ .${cx("label")}`).style.top =
-      "50%";
-
-    document.querySelector(`#${e.target.id} ~ .${cx("label")}`).style.zIndex =
-      "-1";
-    document.querySelector(`#${e.target.id} ~ .${cx("label")}`).style.fontSize =
-      "16px";
-  }
-};
-
-const handleFocusInput = (e) => {
-  if (e.target.value === "") {
-    document.querySelector(`#${e.target.id} ~ .${cx("label")}`).style.top = "0";
-    document.querySelector(`#${e.target.id} ~ .${cx("label")}`).style.zIndex =
-      "0";
-    document.querySelector(`#${e.target.id} ~ .${cx("label")}`).style.fontSize =
-      "10px";
-  }
-};
-
-const handleShowHidePass = (e) => {
-  document
-    .querySelector(`.${cx("show-hide-icon")}`)
-    .classList.toggle(cx("active"));
-  document.querySelector(`#${cx("password")}`).type = document
-    .querySelector(`.${cx("show-hide-icon")}`)
-    .classList.contains(cx("active"))
-    ? "text"
-    : "password";
-};
-
 
 function FormLogin({ classNames }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const LoginSchema = yup.object().shape({
-    emailPhone: yup.string().required("Bạn cần nhập số diện thoại hoặc email"),
+    email: yup.string().required("Bạn cần nhập số diện thoại hoặc email"),
     password: yup.string().required("Bạn cần nhập mật khẩu"),
   });
 
@@ -59,11 +26,12 @@ function FormLogin({ classNames }) {
     <Fragment>
       <Formik
         initialValues={{
-          emailPhone: "",
+          email: "",
           password: "",
         }}
         validationSchema={LoginSchema}
         onSubmit={(user) => {
+          
          loginUser(user, dispatch, navigate)
         }}
       >
@@ -75,14 +43,14 @@ function FormLogin({ classNames }) {
             <h1 className={cx("title")}>Bạn đang thực hiện đăng nhập</h1>
             <div className={cx('input-field')}>
               <FastField
-                error={errors.emailPhone && touched.emailPhone}
-                name="emailPhone"
-                label="Số điện thoại / Email"
+                error={errors.email && touched.email}
+                name="email"
+                label="Email"
                 component={InputField}
               >
-                {errors.emailPhone && touched.emailPhone ? (
+                {errors.email && touched.email ? (
                   <div style={{ color: "red", fontSize: "12px" }}>
-                    {errors.emailPhone}
+                    {errors.email}
                   </div>
                 ) : null}
               </FastField>
@@ -129,10 +97,10 @@ function FormLogin({ classNames }) {
             <Button className={cx("login-button")} to={'/'} noneOutline >
               <img
                 className={cx("logo-img")}
-                src={"https://system.hcm.edu.vn/Images/LogoSo.png"}
+                src={images.githubIcon}
                 alt="so logo"
               />
-              <span>Đăng nhập bằng SGD - HCM</span>
+              <span>Đăng nhập bằng GitHub</span>
             </Button>
             <p className={cx("signup-link")}>
               Bạn chưa có tài khoản?{" "}

@@ -6,45 +6,27 @@ import { Formik, Form, FastField } from "formik";
 import * as yup from "yup";
 import InputField from "../InputField";
 import Button from "../Button";
-import { Link, useLocation } from "react-router-dom";
-import SelectField from "../SelectField";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { registerNewUser } from "~/redux/apiRequest";
+import { useDispatch } from "react-redux";
 
 FormSignUp.propTypes = {};
 
 const SignupSchema = yup.object().shape({
   name: yup.string().required("Bạn cần phải nhập tên"),
-  class: yup.string().required("Bạn cần nhập tên lớp"),
+  className: yup.string().required("Bạn cần nhập tên lớp"),
   school: yup.string().required("Bạn cần phải nhập tên trường"),
-  province: yup.string().required("Hãy chọn một tỉnh"),
-  birthDate: yup.date().max(new Date(), "Ngày tháng năm sinh của bạn không đúng").required("Bạn cần nhập ngày sinh"),
-  emailPhone: yup
-    .string()
-    .required("Bạn cần nhập số diện thoại hoặc email")
-    .test(
-      "emailOrPhone",
-      "Số điện thoại hoặc địa chỉ email không đúng",
-      function (value) {
-        const emailRegex =
-          /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-        const phoneRegex = /^(\+91-|\+91|0)?\d{10}$/;
-        let isValidEmail = emailRegex.test(value);
-        let isValidPhone = phoneRegex.test(value);
-        if (!isValidEmail && !isValidPhone) {
-          return false;
-        }
-        return true;
-      }
-    ),
+  dob: yup
+    .date()
+    .max(new Date(), "Ngày tháng năm sinh của bạn không đúng")
+    .min(new Date("1900-01-01"), "Ngày tháng năm sinh của bạn không đúng")
+    .required("Bạn cần nhập ngày sinh"),
 
   email: yup
     .string()
     .required("Bạn cần nhập địa chỉ email")
     .email("Địa chỉ email không hợp lệ"),
-  phone: yup
-    .string()
-    .required("Bạn cần nhập số điện thoại")
-    .matches(/^(\+91-|\+91|0)?\d{10}$/, "Số điện thoại không hợp lệ"),
+
   password: yup
     .string()
     .required("Bạn cần nhập mật khẩu")
@@ -56,6 +38,7 @@ const SignupSchema = yup.object().shape({
 });
 
 const cx = classNames.bind(styles);
+
 const listOption = [
   {
     value: "an giang",
@@ -309,36 +292,41 @@ const listOption = [
     value: "dong thap",
     label: "Đồng Tháp",
   },
-  
 ];
 
 listOption.sort((a, b) => a.value.localeCompare(b.value));
 
 function FormSignUp(props) {
   const location = useLocation();
-  location.state.role = 'student';
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  location.state.role = "student";
   return (
     <Fragment>
       <Formik
         initialValues={{
           name: "",
-          class: "",
+          className: "",
           school: "",
-          province: "",
-          birthDate: "",
-          emailPhone: "",
+          dob: "",
           email: "",
-          phone: "",
           password: "",
           confirmPassword: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
-          // same shape as initial values
-          console.log(values);
+          const userInfo = {
+            name: values.name,
+            className: values.className,
+            school: values.school,
+            dob: values.dob,
+            email: values.email,
+            password: values.password,
+          };
+         registerNewUser(userInfo, dispatch, navigate)
         }}
       >
-        {({ values, errors, touched }) => (
+        {({ errors, touched }) => (
           <Form className={cx("form")}>
             <div className={cx("info", "user-info")}>
               <h1 className={cx("title")}>Thông tin cá nhân</h1>
@@ -359,13 +347,13 @@ function FormSignUp(props) {
                 {location.state.role === "student" && (
                   <FastField
                     error={errors.name && touched.name}
-                    name="class"
+                    name="className"
                     label="Lớp"
                     component={InputField}
                   >
-                    {errors.class && touched.class ? (
+                    {errors.className && touched.className ? (
                       <div style={{ color: "red", fontSize: "12px" }}>
-                        {errors.class}
+                        {errors.className}
                       </div>
                     ) : null}
                   </FastField>
@@ -388,28 +376,14 @@ function FormSignUp(props) {
               <div className={cx("field-wrapper")}>
                 <FastField
                   error={errors.name && touched.name}
-                  name="birthDate"
+                  name="dob"
                   label="Ngày sinh"
                   type="date"
                   component={InputField}
                 >
-                  {errors.birthDate && touched.birthDate ? (
+                  {errors.dob && touched.dob ? (
                     <div style={{ color: "red", fontSize: "12px" }}>
-                      {errors.birthDate}
-                    </div>
-                  ) : null}
-                </FastField>
-
-                <FastField
-                  error={errors.name && touched.name}
-                  name="province"
-                  label="Tỉnh"
-                  component={SelectField}
-                  listOption={listOption}
-                >
-                  {errors.province && touched.province ? (
-                    <div style={{ color: "red", fontSize: "12px" }}>
-                      {errors.province}
+                      {errors.dob}
                     </div>
                   ) : null}
                 </FastField>
@@ -419,48 +393,18 @@ function FormSignUp(props) {
             <div className={cx("info", "account-info")}>
               <h1 className={cx("title")}>Thông tin tài khoản</h1>
 
-              {location.state.role === "student" ? (
-                <FastField
-                  error={errors.name && touched.name}
-                  name="emailPhone"
-                  label="Số điện thoại hoặc email"
-                  component={InputField}
-                >
-                  {errors.emailPhone && touched.emailPhone ? (
-                    <div style={{ color: "red", fontSize: "12px" }}>
-                      {errors.emailPhone}
-                    </div>
-                  ) : null}
-                </FastField>
-              ) : (
-                <>
-                  <FastField
-                    error={errors.name && touched.name}
-                    name="email"
-                    label="Email"
-                    component={InputField}
-                  >
-                    {errors.email && touched.email ? (
-                      <div style={{ color: "red", fontSize: "12px" }}>
-                        {errors.email}
-                      </div>
-                    ) : null}
-                  </FastField>
-
-                  <FastField
-                    error={errors.name && touched.name}
-                    name="phone"
-                    label="Số điện thoại"
-                    component={InputField}
-                  >
-                    {errors.phone && touched.phone ? (
-                      <div style={{ color: "red", fontSize: "12px" }}>
-                        {errors.phone}
-                      </div>
-                    ) : null}
-                  </FastField>
-                </>
-              )}
+              <FastField
+                error={errors.name && touched.name}
+                name="email"
+                label="Email"
+                component={InputField}
+              >
+                {errors.email && touched.email ? (
+                  <div style={{ color: "red", fontSize: "12px" }}>
+                    {errors.email}
+                  </div>
+                ) : null}
+              </FastField>
 
               <div className={cx("field-wrapper")}>
                 <FastField
@@ -493,7 +437,7 @@ function FormSignUp(props) {
               </FastField>
             </div>
 
-            <Button type={'submit'}  className={cx("sigup-btn")} primary >
+            <Button type={"submit"} className={cx("sigup-btn")} primary>
               Đăng kí
             </Button>
 
