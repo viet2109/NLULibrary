@@ -7,7 +7,8 @@ const images = {
     student: require('./student.png'),
     book1: require('./book1.png'),
     book2: require('./book2.png'),
-    githubIcon: require('./githubIcon.png')
+    githubIcon: require('./githubIcon.png'),
+    fbIcon: require('./fbIcon.png'),
 }
 
 export default images;

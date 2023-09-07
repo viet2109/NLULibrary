@@ -38,10 +38,16 @@
     justify-content: center;
     width: 100%;
     margin-top: 12px;
+
+    &.has-icon {
+      p {
+        min-width: 253px;
+      }
+    }
     .logo-img {
       width: 30px;
       height: 30px;
-      margin-right: 5px;
+      margin-right: 12px;
       transform: translateY(-8%);
     }
   }

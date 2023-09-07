@@ -89,19 +89,19 @@ function FormLogin({ classNames }) {
               Đăng nhập
             </Button>
             <p className={cx("title-select-login")}>Hoặc</p>
-            <Button className={cx("login-button")} to={'/'} noneOutline>
+            <Button className={cx("login-button", 'has-icon')} to={'/'} noneOutline>
               <img
                 className={cx("logo-img")}
-                src={"https://shub.edu.vn/images/icons/facebook.svg"}
+                src={images.fbIcon}
                 alt="facebook logo"
               />
               <span>Đăng nhập bằng Facbook</span>
             </Button>
-            <Button className={cx("login-button")} to={'/'} noneOutline >
+            <Button className={cx("login-button" ,"has-icon")} to={'/'} noneOutline >
               <img
                 className={cx("logo-img")}
                 src={images.githubIcon}
-                alt="so logo"
+                alt="github logo"
               />
               <span>Đăng nhập bằng GitHub</span>
             </Button>
