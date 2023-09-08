@@ -8,23 +8,28 @@ const ax = axios.create({
 export const loginUser = async(user, dispatch, navigate) => {
     dispatch(loginStart())
     try {
-        const res = await ax.post('auth/login', user);
+        const res = await ax.post('auth/login', user, {timeout: 8000});
         
         dispatch(loginSuccess(res.data.data))
         navigate('/class');
     } catch (error) {
         dispatch(loginFailed())
     }
+
+    
 }
 
 export const registerNewUser = async(user,dispatch, navigate) => {
     dispatch(registerStart())
     try {
-        await ax.post('auth/register',user);
-        dispatch(registerSuccess())
-        navigate('/login/student')
-    } catch (error) {
+        const res = await ax.post('auth/register',user);
+        console.log(res.data.data);
+        dispatch(registerSuccess(res.data.data))
+        navigate('/class')
         
+    } catch (error) {
         dispatch(registerFailed())
     }
+
+     
 }

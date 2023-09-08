@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./FormSignUp.module.scss";
 import classNames from "classnames/bind";
@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { registerNewUser } from "~/redux/apiRequest";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loading";
+import { useEffect } from "react";
 
 FormSignUp.propTypes = {};
 
@@ -48,9 +49,20 @@ function FormSignUp(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   location.state.role = "student";
-  const error = useSelector((state) => state.auth.register.error)
-  const isFetching = useSelector(state => state.auth.register.isFetching)
+ 
+
+  const error = useSelector((state) => state.auth.error)
+  const isFetching = useSelector(state => state.auth.isFetching)
+
   
+ 
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      console.log('loaded');
+    })
+
+
+  },[])
   return (
     <Fragment>
       <Formik
@@ -74,6 +86,8 @@ function FormSignUp(props) {
             password: values.password,
           };
          registerNewUser(userInfo, dispatch, navigate)
+         
+         
         }}
       >
         {({ errors, touched }) => (

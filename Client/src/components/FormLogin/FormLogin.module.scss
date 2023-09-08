@@ -23,8 +23,11 @@
     display: inline-block;
     margin-bottom: 24px;
     width: 100%;
-    &:hover {
-      color: var(--primary-color);
+    .link {
+
+      &:hover {
+        color: var(--primary-color);
+      }
     }
   }
   .notice {

@@ -18,8 +18,8 @@ const cx = classNames.bind(styles);
 function FormLogin({ classNames }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector((state) => state.auth.login.error)
-  const isFetching = useSelector((state) => state.auth.login.isFetching)
+  const error = useSelector((state) => state.auth.error)
+  const isFetching = useSelector((state) => state.auth.isFetching)
   const LoginSchema = yup.object().shape({
     email: yup.string().required("Bạn cần nhập số diện thoại hoặc email"),
     password: yup.string().required("Bạn cần nhập mật khẩu"),
@@ -75,9 +75,10 @@ function FormLogin({ classNames }) {
               </FastField>
             </div>
 
-            <Link className={cx("forgot-pass")} to={"/"}>
-              Quên mật khẩu ?
-            </Link>
+            <div className={cx("forgot-pass")} >
+              <Link className={cx('link')} to={'/'}> Quên mật khẩu ?</Link>
+             
+            </div>
                   {error?<p className={cx("notice")}>Địa chỉ email hoặc mật khẩu không đúng</p>:<Fragment></Fragment>}
                  
             <Button

@@ -5,45 +5,41 @@ const authSlice = createSlice({
   initialState: {
     login: {
       currentUser: null,
-      isFetching: null,
-      error: null,
-      success:null
     },
-    register: {
-      isFetching: null,
-      error: null,
-      success:null
-      
-    },
+    isFetching: null,
+    error: null,
+    success:null
   },
   reducers: {
     loginStart: (state) => {
-      state.login.isFetching = true;
+      
+      state.isFetching = true;
     },
     loginSuccess: (state, action) => {
-      state.login.isFetching = false;
+      state.isFetching = false;
       state.login.currentUser = action.payload;
-      state.login.error = false;
-      state.login.success = true;
+      state.error = false;
+      state.success = true;
     },
     loginFailed: (state) => {
-      state.login.isFetching = false;
-      state.login.error = true;
-      state.login.success = false;
+      state.isFetching = false;
+      state.error = true;
+      state.success = false;
     },
 
     registerStart: (state) => {
-      state.register.isFetching = true;
+      state.isFetching = true;
     },
-    registerSuccess: (state) => {
-      state.register.isFetching = false;
-      state.register.error = false;
-      state.register.success = true;
+    registerSuccess: (state,action) => {
+      state.isFetching = false;
+      state.login.currentUser = action.payload
+      state.error = false;
+      state.success = true;
     },
     registerFailed: (state) => {
-      state.register.isFetching = false;
-      state.register.error = true;
-      state.register.success = false;
+      state.isFetching = false;
+      state.error = true;
+      state.success = false;
     },
   },
 });

@@ -14,6 +14,8 @@ import SlideShowComment from "~/components/SlideShowComment";
 import SmoothSlide from "~/components/SmoothSlide";
 import CommunicateSlide from "~/components/CommunicateSlide";
 import homeHeaderStyles from "./HomeHeader";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 Home.propTypes = {};
 
@@ -22,7 +24,9 @@ const hcx = classNames.bind(homeHeaderStyles);
 
 function Home(props) {
   let nav = [];
-
+  const user = useSelector(state => state.auth.login.currentUser)
+  const navigate = useNavigate();
+  
   const isInViewPort = (el) => {
     const { top, bottom, height } = el.getBoundingClientRect();
     const { innerHeight } = window;
@@ -62,6 +66,11 @@ function Home(props) {
   };
 
   const scrollNav = () => {
+    console.log(1);
+    if (nav.length <= 0) {
+      nav[0] = 0;
+    }
+
     const listSection = document.querySelectorAll(`.${cx("section")}`);
     listSection.forEach((item, index) => {
       if (isInViewPort(item)) {
@@ -70,9 +79,18 @@ function Home(props) {
       }
     });
 
-    if (nav.length <= 0) {
-      nav[0] = 0;
-    }
+    listSection.forEach((item, index) => {
+      if (isInViewPort(item)) {
+        if (
+          item.getBoundingClientRect().y >= 0 &&
+          item.getBoundingClientRect().y < 1
+        ) {
+          nav = [];
+          nav.push(index);
+        }
+      }
+    });
+
     document.querySelectorAll(`.${hcx("navigateItem")}`).forEach((item) => {
       item.classList.remove(hcx("active"));
     });
@@ -92,11 +110,15 @@ function Home(props) {
 
   useEffect(() => {
     window.addEventListener("scroll", scrollNav);
-
+    if (user) {
+      navigate('/class')
+    }
     return () => {
       window.removeEventListener("scroll", scrollNav);
     };
   }, []);
+
+
 
   return (
     <>
@@ -232,18 +254,57 @@ function Home(props) {
                 alt={"teacher img"}
               />
 
-              <img  className={cx('background-img', 'star')} src={images.star}  alt="background"  />
-              <img className={cx('background-img', 'star')} src={images.star}  alt="background"  />
-              <img  className={cx('background-img', 'star')} src={images.star}  alt="background" />
-              <img  className={cx('background-img', 'book1')} src={images.book1}  alt="background" />
-              <img  className={cx('background-img', 'book1')} src={images.book1}  alt="background" />
-              <img  className={cx('background-img', 'book1')} src={images.book1}  alt="background" />
-              
-              <img  className={cx('background-img', 'book2')} src={images.book2}  alt="background" />
-              <img className={cx('background-img', 'book2')} src={images.book2}  alt="background"  />
-              <img className={cx('background-img', 'book2')} src={images.book2}  alt="background"  />
-              <img  className={cx('background-img', 'book1')} src={images.book1}  alt="background" />
+              <img
+                className={cx("background-img", "star")}
+                src={images.star}
+                alt="background"
+              />
+              <img
+                className={cx("background-img", "star")}
+                src={images.star}
+                alt="background"
+              />
+              <img
+                className={cx("background-img", "star")}
+                src={images.star}
+                alt="background"
+              />
+              <img
+                className={cx("background-img", "book1")}
+                src={images.book1}
+                alt="background"
+              />
+              <img
+                className={cx("background-img", "book1")}
+                src={images.book1}
+                alt="background"
+              />
+              <img
+                className={cx("background-img", "book1")}
+                src={images.book1}
+                alt="background"
+              />
 
+              <img
+                className={cx("background-img", "book2")}
+                src={images.book2}
+                alt="background"
+              />
+              <img
+                className={cx("background-img", "book2")}
+                src={images.book2}
+                alt="background"
+              />
+              <img
+                className={cx("background-img", "book2")}
+                src={images.book2}
+                alt="background"
+              />
+              <img
+                className={cx("background-img", "book1")}
+                src={images.book1}
+                alt="background"
+              />
             </div>
           </div>
         </section>
@@ -409,7 +470,7 @@ function Home(props) {
           </div>
         </section>
 
-        <section id={"contact"}>
+        <section id={"contact"} className={cx("section")}>
           <div className={cx("background-wrapper")}>
             <img
               className={cx("background")}

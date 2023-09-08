@@ -19,8 +19,8 @@ function Class(props) {
     
     return (
         
-        <div>
-            {user&&user.name}
+        <div style={{height: '1000px'}}>
+            {user&&'Chào, ' + user.name}
         </div>
     );
 }
