@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loginFailed, loginStart, loginSuccess, registerFailed, registerStart, registerSuccess } from "./authSlice";
+import { logOutFailed, logOutStart, logOutSuccess, loginFailed, loginStart, loginSuccess, registerFailed, registerStart, registerSuccess } from "./authSlice";
 
 const ax = axios.create({
     baseURL: process.env.REACT_APP_API_URL
@@ -8,9 +8,9 @@ const ax = axios.create({
 export const loginUser = async(user, dispatch, navigate) => {
     dispatch(loginStart())
     try {
-        const res = await ax.post('auth/login', user, {timeout: 8000});
+        const res = await ax.post('auth/login', user);
         
-        dispatch(loginSuccess(res.data.data))
+        dispatch(loginSuccess(res.data))
         navigate('/class');
     } catch (error) {
         dispatch(loginFailed())
@@ -23,8 +23,7 @@ export const registerNewUser = async(user,dispatch, navigate) => {
     dispatch(registerStart())
     try {
         const res = await ax.post('auth/register',user);
-        console.log(res.data.data);
-        dispatch(registerSuccess(res.data.data))
+        dispatch(registerSuccess(res.data))
         navigate('/class')
         
     } catch (error) {
@@ -32,4 +31,37 @@ export const registerNewUser = async(user,dispatch, navigate) => {
     }
 
      
+}
+
+export const logOutUser = async(token, dispatch, navigate) => {
+    dispatch(logOutStart())
+
+    try {
+        await ax.post('auth/logout',null, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        dispatch(logOutSuccess())
+        navigate('/login/student')
+    } catch (error) {
+        dispatch(logOutFailed())
+    }
+}
+
+export const getAllQuestion = async(token) => {
+
+    try {
+       const res =  await ax.get('questions', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        
+        return res.data
+        
+       
+    } catch (error) {
+       
+    }
 }

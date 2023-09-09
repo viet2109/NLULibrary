@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import LoginHeader from '~/components/Header/LoginHeader';
 import styles from "./LoginRole.module.scss"
 import classNames from 'classnames/bind';
 import FormLogin from '~/components/FormLogin';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 LoginStudent.propTypes = {
@@ -15,6 +16,14 @@ const cx = classNames.bind(styles)
 
 function LoginStudent(props) {
     const location = useLocation()
+    const navigate = useNavigate();
+    const user = useSelector(state => state.auth.login.currentUser)
+
+    useEffect(() => {
+        if (user) {
+            navigate('/class')
+        }
+    }, [])
     return (
        <>
         <LoginHeader></LoginHeader>
